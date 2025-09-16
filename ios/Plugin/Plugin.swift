@@ -24,7 +24,6 @@ public class DarkMode: CAPPlugin {
         }
     }
     
-    @available(iOS 13.0, *)
     @objc func isDarkModeOn(_ call: CAPPluginCall) {
         var isDarkModeOn = false
         DispatchQueue.main.async {

@@ -1,6 +1,6 @@
 {
   "name": "capacitor-dark-mode",
-  "version": "2.0.0",
+  "version": "7.0.0",
   "description": "Handle Dark mode changes on android and iOS",
   "type": "module",
   "main": "dist/plugin.js",
@@ -32,7 +32,18 @@
     "typescript": "^5.6.3"
   },
   "peerDependencies": {
-    "@capacitor/core": "^7.0.0"
+    "@capacitor/core": ">=7.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "capacitor": {
+    "ios": {
+      "src": "ios"
+    },
+    "android": {
+      "src": "android"
+    }
   },
   "files": [
     "dist/",
