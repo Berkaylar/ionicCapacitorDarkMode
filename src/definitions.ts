@@ -9,6 +9,6 @@ export interface DarkModePlugin {
   addListener(
     eventName: 'darkModeStateChanged',
     listenerFunc: (state: DarkModeState) => void,
-  ): PluginListenerHandle;
+  ): Promise<PluginListenerHandle> & PluginListenerHandle;
   registerDarkModeChangeListener(): void;
 }

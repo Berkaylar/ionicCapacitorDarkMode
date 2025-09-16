@@ -1,4 +1,4 @@
-import { WebPlugin } from '@capacitor/core';
+import { WebPlugin, PluginListenerHandle } from '@capacitor/core';
 import { DarkModePlugin, DarkModeState } from './definitions';
 
 export class DarkModeWeb extends WebPlugin implements DarkModePlugin {
@@ -11,6 +11,13 @@ export class DarkModeWeb extends WebPlugin implements DarkModePlugin {
       window.matchMedia &&
       window.matchMedia('(prefers-color-scheme: dark)').matches;
     return { isDarkModeOn };
+  }
+
+  addListener(
+    eventName: 'darkModeStateChanged',
+    listenerFunc: (state: DarkModeState) => void,
+  ): Promise<PluginListenerHandle> & PluginListenerHandle {
+    return super.addListener(eventName, listenerFunc);
   }
 
   registerDarkModeChangeListener(): void {
