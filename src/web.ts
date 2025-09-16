@@ -16,7 +16,7 @@ export class DarkModeWeb extends WebPlugin implements DarkModePlugin {
   addListener(
     eventName: 'darkModeStateChanged',
     listenerFunc: (state: DarkModeState) => void,
-  ): Promise<PluginListenerHandle> & PluginListenerHandle {
+  ): Promise<PluginListenerHandle> {
     return super.addListener(eventName, listenerFunc);
   }
 
