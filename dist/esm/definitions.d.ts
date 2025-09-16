@@ -1,11 +1,9 @@
 import { PluginListenerHandle } from "@capacitor/core";
-declare module '@capacitor/core' {
-    interface PluginRegistry {
-        DarkMode: DarkModePlugin;
-    }
+export interface DarkModeState {
+    isDarkModeOn: boolean;
 }
 export interface DarkModePlugin {
-    isDarkModeOn(): Promise<any>;
-    addListener(eventName: 'darkModeStateChanged', listenerFunc: (state: any) => void): PluginListenerHandle;
+    isDarkModeOn(): Promise<DarkModeState>;
+    addListener(eventName: 'darkModeStateChanged', listenerFunc: (state: DarkModeState) => void): PluginListenerHandle;
     registerDarkModeChangeListener(): void;
 }

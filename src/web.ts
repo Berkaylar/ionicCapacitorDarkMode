@@ -1,45 +1,27 @@
 import { WebPlugin } from '@capacitor/core';
-import { DarkModePlugin } from './definitions';
+import { DarkModePlugin, DarkModeState } from './definitions';
 
 export class DarkModeWeb extends WebPlugin implements DarkModePlugin {
-  darkMode = {"isDarkModeOn":false}
-
   constructor() {
-    super({
-      name: 'DarkMode',
-      platforms: ['web','android','ios'],
-    });
+    super();
   }
 
-  isDarkModeOn(): Promise<any> {
-    var darkMode = {"isDarkModeOn":false}
-    if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
-    {
-      darkMode.isDarkModeOn = true
-    }
-    return  Promise.resolve(darkMode);
+  async isDarkModeOn(): Promise<DarkModeState> {
+    const isDarkModeOn =
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return { isDarkModeOn };
   }
 
-  registerDarkModeChangeListener():void
-  {
-    var darkMode = {"isDarkModeOn":false}
-      window.matchMedia("(prefers-color-scheme: dark)").addListener((status) => {
-        if(status.matches)
-        {
-          darkMode = {"isDarkModeOn":true}
-        }
-        else
-        {
-          darkMode = {"isDarkModeOn":false}
-        }
-        this.notifyListeners("darkModeStateChanged",darkMode)
-    });
+  registerDarkModeChangeListener(): void {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const handleChange = (event: MediaQueryListEvent) => {
+      const state: DarkModeState = { isDarkModeOn: event.matches };
+      this.notifyListeners('darkModeStateChanged', state);
+    };
+
+    // Use addEventListener instead of deprecated addListener
+    mediaQuery.addEventListener('change', handleChange);
   }
 }
-
-const DarkMode = new DarkModeWeb();
-
-export { DarkMode };
-
-import { registerWebPlugin } from '@capacitor/core';
-registerWebPlugin(DarkMode);

@@ -1,13 +1,13 @@
 {
   "name": "capacitor-dark-mode",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Handle Dark mode changes on android and iOS",
   "main": "dist/plugin.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
   "scripts": {
     "lint": "npm run prettier -- --check && npm run swiftlint -- lint",
-    "prettier": "prettier \"**/*.{css,html,ts,js,java}\"",
+    "prettier": "prettier \"**/*.{css,html,ts,js,java}\" --plugin=prettier-plugin-java",
     "swiftlint": "node-swiftlint",
     "build": "npm run clean && tsc && rollup -c rollup.config.js",
     "clean": "rimraf ./dist",
@@ -17,21 +17,21 @@
   "author": "Hinddeep Shailesh Purohit",
   "license": "MIT",
   "devDependencies": {
-    "@capacitor/android": "^3.2.3",
-    "@capacitor/core": "3.2.3",
-    "@capacitor/ios": "^3.2.3",
-    "@ionic/prettier-config": "^1.0.0",
-    "@ionic/swiftlint-config": "^1.0.0",
-    "@rollup/plugin-node-resolve": "^8.1.0",
-    "prettier": "^2.0.5",
-    "prettier-plugin-java": "^0.8.0",
-    "rimraf": "^3.0.0",
-    "rollup": "^2.21.0",
-    "swiftlint": "^1.0.1",
-    "typescript": "~3.8.3"
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/core": "^7.0.0",
+    "@capacitor/ios": "^7.0.0",
+    "@ionic/prettier-config": "^4.0.0",
+    "@ionic/swiftlint-config": "^1.1.2",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "prettier": "^3.4.2",
+    "prettier-plugin-java": "^2.6.6",
+    "rimraf": "^5.0.10",
+    "rollup": "^4.24.0",
+    "swiftlint": "^1.0.2",
+    "typescript": "^5.6.3"
   },
   "peerDependencies": {
-    "@capacitor/core": "^3.2.3"
+    "@capacitor/core": "^7.0.0"
   },
   "files": [
     "dist/",
@@ -62,6 +62,6 @@
     "url": "https://github.com/hinddeep/ionicCapacitorDarkMode/issues"
   },
   "dependencies": {
-    "@capacitor/cli": "^3.2.3"
+    "@capacitor/cli": "^7.0.0"
   }
 }

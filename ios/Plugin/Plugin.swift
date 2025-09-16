@@ -10,8 +10,7 @@ public class DarkMode: CAPPlugin {
 
     override public func load() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.darkModeChanged), name: NSNotification.Name(rawValue: "CAPDarkModeDidChange"), object: nil)
-         
-      }
+    }
     
     @objc func darkModeChanged(_ notification: Notification)
     {
