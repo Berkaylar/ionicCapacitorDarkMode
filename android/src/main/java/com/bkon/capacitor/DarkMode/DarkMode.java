@@ -50,7 +50,7 @@ public class DarkMode extends Plugin {
     @PluginMethod
     public void isDarkModeOn(PluginCall call) {
         JSObject data = checkMode();
-        call.success(data);
+        call.resolve(data);
     }
 
     public JSObject checkMode() {
